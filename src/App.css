@@ -1,4 +1,6 @@
-
+.Header{
+    margin-left: 1em;
+}
 
 .About{
     display: flex;
@@ -12,4 +14,10 @@
 
 .bio{
     width: 60vw
+}
+
+.Resume{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
