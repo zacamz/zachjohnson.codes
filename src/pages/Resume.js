@@ -3,13 +3,9 @@ import React from "react"
 import resume from "../PDFs/resume.pdf"
 
 
-
-
 function Resume () {
-    pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-        'pdfjs-dist/build/pdf.worker.min.js',
-        import.meta.url,
-      ).toString();
+    pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.js'
+
 
     return(
         <div className="Resume">
