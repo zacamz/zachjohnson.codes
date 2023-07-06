@@ -5,7 +5,7 @@ import Emoji from "./Emoji"
 const Header = () =>{
 
     return(
-        <div>
+        <div className="Header">
             <h1>Zach Codes 
                 <Link to="/About"> ? </Link>   
                 <Link to="/Resume"> . </Link> 

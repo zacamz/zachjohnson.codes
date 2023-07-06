@@ -1,2 +1,15 @@
 
 
+.About{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Selfie{
+    width: 60vw;
+}
+
+.bio{
+    width: 60vw
+}
