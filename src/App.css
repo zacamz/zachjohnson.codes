@@ -2,10 +2,7 @@
     margin-left: 1em;
 }
 
-canvas {
-    width: 100% !important;
-    height: auto !important;
-  }
+
 .About{
     display: flex;
     align-items: center;
