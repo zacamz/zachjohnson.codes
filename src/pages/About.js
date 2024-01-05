@@ -9,9 +9,9 @@ function About() {
             <img src={selfie} alt="Selfie of Zach overlooking the Boston Harbor Musuem" className='Selfie'/>
            <div className='bio'>
              <h3>
-                I am litterally just typing in an h3 tag right now, so I am not sure how much you would consider me a Front End Developer.<br/>
+                I am literally just typing in an h3 tag right now, so I am not sure how much you would consider me a Front End Developer.<br/>
                 But I love the idea of building this portfolio as simple and with as much fun as possible.<br/>
-                As this is my first ever React Project starting from the ground up and first time Self Hosting a website,<br/>
+                As this is my first ever react project starting from the ground up and first time self hosting a website,<br/>
                 I am sure there will be a lot to figure out.<br/>
 
                 But as for me I am a lot of things besides a "coder"<br/>

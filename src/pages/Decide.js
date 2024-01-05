@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 let URL = "https://yesno.wtf/api"
 
@@ -17,14 +17,12 @@ function Decide() {
     
         let json = await data.json();
     
-        console.log(json)
         setAnswer(json)
         return json
     
     }
     let [answer, setAnswer] = useState(loading)
 
-    console.log(answer)
 
     return (
         <div>
