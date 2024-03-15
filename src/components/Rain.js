@@ -1,67 +1,83 @@
 import React, { useCallback, useEffect } from 'react';
 import p5 from 'p5'
 
-let drops = []
 
-class Drop {
+class Rain extends React.Component{
     constructor() {
-        this.x = random(0, width)
-        this.y = this.gety(),
-            this.yspeed = random(4, 10)
-    };
-
-    gety() {
-        return random(-1, -500)
+        super()
+        this.myRef = React.createRef()
     }
 
-    fall() {
-        this.y = this.y + this.yspeed
-        if (this.y > height) { this.y = this.gety() }
-    };
-    show() {
-        stroke(138, 42, 226)
-        line(this.x, this.y, this.x, this.y + 10)
-    };
+
+    Sketch = (p) =>{
+        let drops = []
+
+        class Drop {
+            constructor() {
+                this.x = p.random(0, p.width);
+                this.y = this.gety();
+                this.yspeed = p.random(4, 10);
+            };
+        
+            gety() {
+                return p.random(-1, -500)
+            }
+        
+            fall() {
+                this.y = this.y + this.yspeed
+                if (this.y > p.height) { this.y = this.gety() }
+            };
+            show() {
+                p.stroke(138, 42, 226)
+                p.line(this.x, this.y, this.x, this.y + 10)
+            };
+        }
+        p.setup =()=>{
+            let canvas = p.createCanvas(p.windowWidth, p.windowHeight)
+            canvas.position(0, 0)
+            canvas.style("z-index", "-1")
+            canvas.parent('p5-sketch-container');
+            
+            for (let i = 0; i < p.windowWidth; i += 1) {
+                drops[i] = new Drop()
+            }
+            
+        }
+        p.draw=()=>{
+            p.background(230, 230, 250)
+            for (let i = 0; i < drops.length; i += 1) {
+                drops[i].fall()
+                drops[i].show()
+            }
+            
+        }
 }
-const RainSketch = () => {
-    useEffect(() => {
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/p5@1.9.1/lib/p5.js';
-        script.async = true;
-        document.body.appendChild(script);
+componentDidMount() {
+    this.myP5 = new p5(this.Sketch, this.myRef.current)
+}
 
-        return () => {
-            document.body.removeChild(script);
-        };
-    }, []);
+componentDidUpdate() {
+    this.myP5.remove()
+    this.myP5 = new p5(this.Sketch, this.myRef.current)
+}
 
+componentWillUnmount() {
+    this.myP5.remove()
+}
+
+
+render(){
+    
     return (
-
+        
         <div>
-            <div id="p5-sketch-container"></div>
+            <div id="p5-sketch-container" ref={this.myRef}></div>
 
         </div>
     )
-
+    
 }
-export default RainSketch;
-const setup=()=> {
-    let canvas = createCanvas(windowWidth, windowHeight)
-    canvas.position(0, 0)
-    canvas.style("z-index", "-1")
-    canvas.parent('p5-sketch-container');
-
-    for (let i = 0; i < windowWidth; i += 1) {
-        drops[i] = new Drop()
-    }
-};
-const draw = useCallback(p5) => {
-
-    background(230, 230, 250)
-    for (let i = 0; i < drops.length; i += 1) {
-        drops[i].fall()
-        drops[i].show()
-    }
-
 }
+
+export default Rain;
 
