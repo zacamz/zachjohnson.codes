@@ -7,6 +7,7 @@ import Resume from './pages/Resume';
 import Projects from './pages/Projects';
 import Decide from './pages/Decide';
 import Rain from './components/Rain'
+import BdayCountDown from './pages/BdayCountDay';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='Projects' element={<Projects />}/>
         <Route path='Decide' element={<Decide />}/>
         <Route path='Rain' element={<Rain />}/>
+        <Route path='BdayCountDown' element={<BdayCountDown />}/>
       </Routes>
     </div>
   );
