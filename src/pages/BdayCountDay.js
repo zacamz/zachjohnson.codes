@@ -1,45 +1,50 @@
 import React, { useState, useEffect } from 'react';
-
+import './BdayCountDay.css';
 
 function BdayCountDown() {
     const [currentTime, setCurrentTime] = useState(new Date());
-    let NinetyBday = new Date("2087-02-05")
-
-    function monthsLeft(startDate, endDate) {
-        let months = (endDate.getFullYear() - startDate.getFullYear()) * 12;
-        months -= startDate.getMonth();
-        months += endDate.getMonth();
-        
-        // Adjust for the day of the month to get a fractional result
-        // If you want only the full months left (e.g., Math.floor(months))
-        // you might not need this fractional adjustment.
-        const daysDifference = endDate.getDate() - startDate.getDate();
-        if (daysDifference < 0) {
-            // If the end date is earlier in its month than the start date was, 
-            // decrement the month count slightly.
-            months -= 1; 
-        }
-
-        return months
-    
-    }
+    const birthDate = new Date("1997-02-05");
+    const ninetyBday = new Date("2087-02-05");
 
     useEffect(() => {
       const intervalId = setInterval(() => {
         setCurrentTime(new Date());
-      }, 1000); // Update every second
+      }, 1000);
   
-      // Clear the interval when the component unmounts
       return () => clearInterval(intervalId);
-    }, []); // Empty dependency array means this effect runs once on mount
+    }, []);
+
+    // Calculate weeks
+    const msPerWeek = 1000 * 60 * 60 * 24 * 7;
+    const weeksLived = Math.floor((currentTime - birthDate) / msPerWeek);
+    const totalWeeks = Math.floor((ninetyBday - birthDate) / msPerWeek);
+    const weeksRemaining = totalWeeks - weeksLived;
+    const percentageLived = ((weeksLived / totalWeeks) * 100).toFixed(2);
+
+    // Create array for visualization
+    const weeksArray = Array.from({ length: totalWeeks }, (_, i) => i < weeksLived);
+
+    // Calculate other stats
+    const daysRemaining = Math.floor((ninetyBday - currentTime) / (1000 * 60 * 60 * 24));
+    const yearsLived = ((currentTime - birthDate) / (1000 * 60 * 60 * 24 * 365.25)).toFixed(2);
   
     return (
       <div>
         <p>Current Time: {currentTime.toLocaleTimeString()}</p>
         <p>Current Date: {currentTime.toLocaleDateString()}</p>
-        <p>Days till Zach is 90: {Math.round((NinetyBday - currentTime)/(1000*60*60*24))}</p>
-        <p>Weeks till Zach is 90: {Math.round((NinetyBday - currentTime)/(1000*60*60*24*7))}</p>
-        <p>Months till Zach is 90: {monthsLeft(currentTime,NinetyBday)}</p>
+        <p>Weeks Lived: {weeksLived.toLocaleString()}</p>
+        <p>Weeks Remaining: {weeksRemaining.toLocaleString()}</p>
+        <p>Total Weeks (90 years): {totalWeeks.toLocaleString()}</p>
+        <p>Days till Zach is 90: {daysRemaining.toLocaleString()}</p>
+        
+        <div className="weeks-grid">
+          {weeksArray.map((isLived, index) => (
+            <div
+              key={index}
+              className={`week-square ${isLived ? 'lived' : 'remaining'}`}
+            />
+          ))}
+        </div>
       </div>
     );
   }
