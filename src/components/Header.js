@@ -15,6 +15,7 @@ const Header = () =>{
                 <Link to="/Waves"><Emoji symbol="🌊" label="water-wave"/></Link>
                 <Link to="/Decide"><Emoji symbol="🤔" label="deciding-face"/></Link>
                 <Link to="/Rain"><Emoji symbol="☔" label="umbrella-rain"/></Link>
+                <Link to="/BdayCountDown"><Emoji symbol="🎂" label="birthday-cake"/></Link>
             </h1>
         </div>
     )

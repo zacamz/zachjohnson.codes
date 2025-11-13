@@ -1,0 +1,36 @@
+.weeks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10px, 1fr));
+  gap: 1px;
+  margin-top: 1rem;
+  max-width: 100%;
+}
+
+.week-square {
+  aspect-ratio: 1;
+  width: 100%;
+}
+
+.week-square.lived {
+  background-color: #000;
+}
+
+.week-square.remaining {
+  background-color: #ddd;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .weeks-grid {
+    grid-template-columns: repeat(auto-fill, minmax(8px, 1fr));
+    gap: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .weeks-grid {
+    grid-template-columns: repeat(auto-fill, minmax(6px, 1fr));
+    gap: 1px;
+  }
+}
+
