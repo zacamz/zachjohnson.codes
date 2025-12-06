@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import WaveGif from '../components/Wave.js'
+
+
 
 let URL = "https://api.swellcloud.net/v1/point?lat=30.680&lon=-81.429&model=gfs&vars=hs%2Ctp%2Cdp%2Css_hs%2Css_dp%2Cww_hs%2Cww_dp%2Cwndspd%2Cwnddir"
 
@@ -18,27 +21,36 @@ let loading = {data: [
     {
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/640px-Question_mark_%28black%29.svg.png",
         "answer": "undecided",
-        "hs": 0
+        "hs": "Loading 🏄"
     }
-    ]
+]
 }
+
+
 
 
 function ShoreCheck() {
     
+    
     let swellCloudAPICall = async () => {
-        setAnswer(loading)
-        console.log(params)
-        let data = await fetch(URL, params)
-        console.log(fetch(URL, params))
+        setIsLoading(true);
+        try{
+            setAnswer(loading)
+            let data = await fetch(URL, params)
+            let json = await data.json();
+            setAnswer(json)
+            return json;
+        }catch(error){
+            console.error("Error fetching data:", error);
+            setIsLoading(false);
+            setAnswer({data: [{hs: "Error Fetching Data"}]})
+            return;
+        }finally{
+            setIsLoading(false);             
+        }
         
-        let json = await data.json();
-        console.log(json)
-    
-        setAnswer(json)
-        return json
-    
     }
+    let [isLoading, setIsLoading] = useState(false);
     let [answer, setAnswer] = useState(loading)
 
 
@@ -47,7 +59,15 @@ function ShoreCheck() {
 
             <button onClick={()=> swellCloudAPICall()}>Check the Shore, Grom!</button>
             
-            <h2>Wave Height {answer.data[0].hs}</h2>
+            <div>
+                {isLoading ? (
+                    <WaveGif/>
+                ) : (
+                    <h2>Wave Height {answer.data[0].hs}</h2>
+                    
+                )}
+            </div>
+
 
 
         </div>
