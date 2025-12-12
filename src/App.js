@@ -4,6 +4,7 @@ import Links from './pages/Links';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Resume from './pages/Resume';
+import Now from './pages/Now';
 import Projects from './pages/Projects';
 import Decide from './pages/Decide';
 import Waves from './pages/Waves';
@@ -18,8 +19,8 @@ function App() {
         <Route path="About" element={<About />}/>
         <Route path="Links" element={<Links />}/>
         <Route path='Resume' element={<Resume />}/>
-        <Route path='Projects' element={<Projects />}/>
         <Route path='Decide' element={<Decide />}/>
+        <Route path='Now' element={<Now />}/>
         <Route path='Waves' element={<Waves />}/>
         <Route path='Rain' element={<Rain />}/>
         <Route path='BdayCountDown' element={<BdayCountDown />}/>
