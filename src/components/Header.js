@@ -12,6 +12,7 @@ const Header = () =>{
                 <Link to="/Projects" > ! </Link> 
                 <Link to="/Links"> @ </Link> 
                 <Link to="/Blog"> * </Link> 
+                <Link to="/Now"> 👇 </Link> 
                 <Link to="/Waves"><Emoji symbol="🌊" label="water-wave"/></Link>
                 <Link to="/Decide"><Emoji symbol="🤔" label="deciding-face"/></Link>
                 <Link to="/Rain"><Emoji symbol="☔" label="umbrella-rain"/></Link>
