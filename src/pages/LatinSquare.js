@@ -66,20 +66,20 @@ function generateColorMap(values) {
   return map;
 }
 
-
-
+const colorMap = generateColorMap(latinsquaregenerator(inputValue).flat());
+console.log(colorMap);
     return(
         <div className='LatinSquare'>
            <form onSubmit={handleFormSubmit}> 
            <h3>How big do you want your <a href="https://en.wikipedia.org/wiki/Latin_square">Latin square</a>?</h3> <input type="number" value={inputValue} onChange={handleInputChange}></input>
-              <button type="submit">Generate</button>
+              {/* <button type="submit">Generate</button> */}
               </form>
            <div className='LatinSquareGrid'>
             <div className="latin-grid">
             {latinsquaregenerator(inputValue).map((row, rowIdx) => (
-            <div className="latin-row" key={rowIdx}>
+            <div className="latin-row" key={rowIdx} >
       {row.map((value, colIdx) => (
-        <div className="latin-cell" key={colIdx}>
+        <div className="latin-cell" key={colIdx} style={{ backgroundColor: colorMap[value] }}>
           {value}
         </div>
       ))}
