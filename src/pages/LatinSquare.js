@@ -40,6 +40,10 @@ const shuffleArray = (array) => {
   return newArray;
 };
 
+const getRandomHexColor = () => {
+  return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0');
+};
+
 const latinsquaregenerator = (num_square) => {
     let square = []
     for (let i = 0; i < num_square; i++) {
@@ -54,14 +58,35 @@ const latinsquaregenerator = (num_square) => {
     return square
 }
 
+function generateColorMap(values) {
+  const map = {};
+  values.forEach(v => {
+    map[v] = getRandomHexColor();
+  });
+  return map;
+}
+
+
+
     return(
-        <div className='Now'>
+        <div className='LatinSquare'>
            <form onSubmit={handleFormSubmit}> 
            <h3>How big do you want your <a href="https://en.wikipedia.org/wiki/Latin_square">Latin square</a>?</h3> <input type="number" value={inputValue} onChange={handleInputChange}></input>
               <button type="submit">Generate</button>
               </form>
            <div className='LatinSquareGrid'>
-            </div>
+            <div className="latin-grid">
+            {latinsquaregenerator(inputValue).map((row, rowIdx) => (
+            <div className="latin-row" key={rowIdx}>
+      {row.map((value, colIdx) => (
+        <div className="latin-cell" key={colIdx}>
+          {value}
+        </div>
+      ))}
+    </div>
+  ))}
+</div>
+          </div>
         </div>
     )
 }
