@@ -10,6 +10,7 @@ import Decide from './pages/Decide';
 import Waves from './pages/Waves';
 import Rain from './components/Rain'
 import BdayCountDown from './pages/BdayCountDay';
+import LatinSquare from './pages/LatinSquare';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='Waves' element={<Waves />}/>
         <Route path='Rain' element={<Rain />}/>
         <Route path='BdayCountDown' element={<BdayCountDown />}/>
+        <Route path='LatinSquare' element={<LatinSquare />}/>
       </Routes>
     </div>
   );
