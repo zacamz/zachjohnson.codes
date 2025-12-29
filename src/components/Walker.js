@@ -15,12 +15,12 @@ class RandomWalk extends React.Component{
 
         class Walker {
             constructor() {
-                this.x = this.width /2;
-                this.y = this.height /2;
+                this.x = p.width / 2;
+                this.y = p.height / 2;
             };
         
             step() {
-                    const choice = Math.floor(Math.random(4));
+                    const choice = Math.floor(Math.random() * 4);
                 if (choice === 0) {
                 this.x++;
                 } else if (choice === 1) {
@@ -32,7 +32,8 @@ class RandomWalk extends React.Component{
                 }
             };
             show() {
-                p.stroke(0)
+                p.stroke(0);
+                p.strokeWeight(1);
                 p.point(this.x, this.y)
             };
         }
@@ -40,13 +41,12 @@ class RandomWalk extends React.Component{
             let canvas = p.createCanvas(p.windowWidth, p.windowHeight)
             canvas.position(0, 0)
             canvas.style("z-index", "-1")
-            canvas.parent('p5-sketch-container');
             walker = new Walker()
         }
         p.draw=()=>{
-            walker.step(
+            walker.step()
             walker.show()
-            )
+            
         }
 }
 componentDidMount() {
