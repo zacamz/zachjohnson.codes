@@ -9,6 +9,7 @@ import Projects from './pages/Projects';
 import Decide from './pages/Decide';
 import Waves from './pages/Waves';
 import Rain from './components/Rain'
+import RandomWalk from './components/Walker'
 import BdayCountDown from './pages/BdayCountDay';
 import LatinSquare from './pages/LatinSquare';
 
@@ -26,6 +27,7 @@ function App() {
         <Route path='Rain' element={<Rain />}/>
         <Route path='BdayCountDown' element={<BdayCountDown />}/>
         <Route path='LatinSquare' element={<LatinSquare />}/>
+        <Route path='Walker' element={<RandomWalk />}/>
       </Routes>
     </div>
   );
