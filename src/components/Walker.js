@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import p5 from 'p5'
+import p5,{random} from 'p5'
 
 
 class RandomWalk extends React.Component{
@@ -12,6 +12,7 @@ class RandomWalk extends React.Component{
     Sketch = (p) =>{
         let walker
         let outcomeText
+        let lengths = [1,2,3,4]
         
         class Walker {
             constructor() {
@@ -28,15 +29,18 @@ class RandomWalk extends React.Component{
                 this.probability = newProb.map(v => v / sum); // normalize
     }
             step() {
-                    const choice = Math.random(1);
+                    const choice = p5.random(1);
+                    const r = p5.random(1,2)
+                    console.log(r)
                 if (choice < (this.probability[0])) {
-                this.x++;
+                // this.x+= r;
+                this.x+= r;
                 } else if (choice < (this.probability[0]+this.probability[1])) {
-                this.x--;
+                this.x-= r;
                 } else if (choice < (this.probability[0]+this.probability[1]+this.probability[2])) {
-                this.y++;
+                this.y+= r;
                 } else {
-                this.y--;
+                this.y-= r;
                 }
             };
             show() {
@@ -46,7 +50,11 @@ class RandomWalk extends React.Component{
             };
         }
         p.setup =()=>{
-
+            
+            let canvas = p.createCanvas(p.windowWidth, p.windowHeight)
+            canvas.position(0, 0)
+            canvas.style("z-index", "-1")
+            walker = new Walker()
               let centerX = p.windowWidth / 2;
               let bottomY = p.windowHeight - 80; 
               let spacing = 40; 
@@ -81,10 +89,6 @@ class RandomWalk extends React.Component{
                     if (walker) walker.setProbability([.4,.2,.2,.2]);
                 });
                 
-            let canvas = p.createCanvas(p.windowWidth, p.windowHeight)
-            canvas.position(0, 0)
-            canvas.style("z-index", "-1")
-            walker = new Walker()
         }
         p.draw=()=>{
             walker.step()
