@@ -12,6 +12,7 @@ import Rain from './components/Rain'
 import RandomWalk from './components/Walker'
 import BdayCountDown from './pages/BdayCountDay';
 import LatinSquare from './pages/LatinSquare';
+import Art from './pages/ArtQuestionMark'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="About" element={<About />}/>
         <Route path="Links" element={<Links />}/>
         <Route path='Resume' element={<Resume />}/>
+        <Route path='ArtQuestionMark' element={<Art />}/>
         <Route path='Decide' element={<Decide />}/>
         <Route path='Now' element={<Now />}/>
         <Route path='Waves' element={<Waves />}/>
