@@ -3,6 +3,8 @@ import React,{useState} from 'react';
 
 function LatinSquare() { 
 const [inputValue, setInputValue] = useState('');
+const [square, setSquare] = useState([]);
+const [colorMap, setColorMap] = useState({});
 
   // The function to execute on submit
   const handleFormSubmit = (event) => {
@@ -11,7 +13,13 @@ const [inputValue, setInputValue] = useState('');
 
     // Execute your desired function (e.g., log the input value, make API call)
     console.log('Function executed with input value:', inputValue);
-    latinsquaregenerator(inputValue);
+    const n = parseInt(inputValue, 10);
+    if (!n || n <= 0) return;
+
+    const genSquare = latinsquaregenerator(n);
+    setSquare(genSquare);
+    setColorMap(generateColorMap(genSquare.flat()));
+
     // Optional: Clear the input field after submission
     setInputValue('');
   }
@@ -45,17 +53,28 @@ const getRandomHexColor = () => {
 };
 
 const latinsquaregenerator = (num_square) => {
-    let square = []
-    for (let i = 0; i < num_square; i++) {
-        let newrow = []
-        for (let j = 0; j < num_square; j++) {
-            newrow.push((i + j) % num_square + 1);
-        }
-        square.push(newrow)
+  const n = parseInt(num_square, 10);
+  if (!n || n <= 0) return [];
+
+  // Build a simple cyclic Latin square
+  let base = [];
+  for (let i = 0; i < n; i++) {
+    let newrow = [];
+    for (let j = 0; j < n; j++) {
+      newrow.push((i + j) % n + 1);
     }
-    square = shuffleArray(square)
-    console.log(square)
-    return square
+    base.push(newrow);
+  }
+
+  // Shuffle rows
+  const rowShuffled = shuffleArray(base);
+
+  // Create and apply a shuffled column permutation
+  const cols = Array.from({ length: n }, (_, i) => i);
+  const colPerm = shuffleArray(cols);
+  const fullyShuffled = rowShuffled.map(row => colPerm.map(idx => row[idx]));
+
+  return fullyShuffled;
 }
 
 function generateColorMap(values) {
@@ -66,8 +85,6 @@ function generateColorMap(values) {
   return map;
 }
 
-const colorMap = generateColorMap(latinsquaregenerator(inputValue).flat());
-console.log(colorMap);
     return(
         <div className='LatinSquare'>
            <form onSubmit={handleFormSubmit}> 
@@ -76,7 +93,7 @@ console.log(colorMap);
               </form>
            <div className='LatinSquareGrid'>
             <div className="latin-grid">
-            {latinsquaregenerator(inputValue).map((row, rowIdx) => (
+            {square.length > 0 && square.map((row, rowIdx) => (
             <div className="latin-row" key={rowIdx} >
       {row.map((value, colIdx) => (
         <div className="latin-cell" key={colIdx} style={{ backgroundColor: colorMap[value] }}>
