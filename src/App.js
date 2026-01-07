@@ -28,11 +28,8 @@ function App() {
         <Route path='Rain' element={<Rain />}/>
         <Route path='BdayCountDown' element={<BdayCountDown />}/>
         <Route path='LatinSquare' element={<LatinSquare />}/>
-<<<<<<< Updated upstream
         <Route path='Walker' element={<RandomWalk />}/>
-=======
         <Route path='CodingTrain' element={<CodingTrain />}/>
->>>>>>> Stashed changes
       </Routes>
     </div>
   );
