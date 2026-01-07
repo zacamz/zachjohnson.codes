@@ -12,6 +12,7 @@ import Rain from './components/Rain'
 import RandomWalk from './components/Walker'
 import BdayCountDown from './pages/BdayCountDay';
 import LatinSquare from './pages/LatinSquare';
+import CodingTrain from './pages/CodingTrain';
 
 function App() {
   return (
@@ -27,7 +28,11 @@ function App() {
         <Route path='Rain' element={<Rain />}/>
         <Route path='BdayCountDown' element={<BdayCountDown />}/>
         <Route path='LatinSquare' element={<LatinSquare />}/>
+<<<<<<< Updated upstream
         <Route path='Walker' element={<RandomWalk />}/>
+=======
+        <Route path='CodingTrain' element={<CodingTrain />}/>
+>>>>>>> Stashed changes
       </Routes>
     </div>
   );
