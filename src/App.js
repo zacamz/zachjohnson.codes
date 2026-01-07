@@ -12,6 +12,7 @@ import Rain from './components/Rain'
 import RandomWalk from './components/Walker'
 import BdayCountDown from './pages/BdayCountDay';
 import LatinSquare from './pages/LatinSquare';
+import CodingTrain from './pages/CodingTrain';
 import Art from './pages/ArtQuestionMark'
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path='BdayCountDown' element={<BdayCountDown />}/>
         <Route path='LatinSquare' element={<LatinSquare />}/>
         <Route path='Walker' element={<RandomWalk />}/>
+        <Route path='CodingTrain' element={<CodingTrain />}/>
       </Routes>
     </div>
   );
