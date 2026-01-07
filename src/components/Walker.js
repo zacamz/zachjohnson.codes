@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import p5,{random} from 'p5'
+import p5 from 'p5'
 
 
 class RandomWalk extends React.Component{
@@ -21,26 +21,24 @@ class RandomWalk extends React.Component{
                 this.y = p.height / 2;
             };
         
-
             setProbability(newProb) {
                 if (!Array.isArray(newProb) || newProb.length !== 4) return;
                 const sum = newProb.reduce((a,b)=>a+b,0);
                 if (sum <= 0) return;
                 this.probability = newProb.map(v => v / sum); // normalize
-    }
+            }
             step() {
-                    const choice = p5.random(1);
-                    const r = p5.random(1,2)
-                    console.log(r)
+                    const choice = Math.random();
+                    const r = p.random(1,2)
+                    // console.log(r)
                 if (choice < (this.probability[0])) {
-                // this.x+= r;
-                this.x+= r;
+                    this.x+= r;
                 } else if (choice < (this.probability[0]+this.probability[1])) {
-                this.x-= r;
+                    this.x-= r;
                 } else if (choice < (this.probability[0]+this.probability[1]+this.probability[2])) {
-                this.y+= r;
+                    this.y+= r;
                 } else {
-                this.y-= r;
+                    this.y-= r;
                 }
             };
             show() {
@@ -50,7 +48,7 @@ class RandomWalk extends React.Component{
             };
         }
         p.setup =()=>{
-            
+
             let canvas = p.createCanvas(p.windowWidth, p.windowHeight)
             canvas.position(0, 0)
             canvas.style("z-index", "-1")
@@ -91,6 +89,7 @@ class RandomWalk extends React.Component{
                 
         }
         p.draw=()=>{
+            if (!walker) return;
             walker.step()
             walker.show()
             
@@ -100,10 +99,7 @@ componentDidMount() {
     this.myP5 = new p5(this.Sketch, this.myRef.current)
 }
 
-componentDidUpdate() {
-    this.myP5.remove()
-    this.myP5 = new p5(this.Sketch, this.myRef.current)
-}
+// removed componentDidUpdate to avoid recreating p5 every update
 
 componentWillUnmount() {
     this.myP5.remove()
