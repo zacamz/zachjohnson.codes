@@ -14,6 +14,7 @@ import BdayCountDown from './pages/BdayCountDay';
 import LatinSquare from './pages/LatinSquare';
 import CodingTrain from './pages/CodingTrain';
 import Art from './pages/ArtQuestionMark'
+import Wheel from './pages/Wheel';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='LatinSquare' element={<LatinSquare />}/>
         <Route path='Walker' element={<RandomWalk />}/>
         <Route path='CodingTrain' element={<CodingTrain />}/>
+        <Route path='Wheel' element={<Wheel />}/>
       </Routes>
     </div>
   );

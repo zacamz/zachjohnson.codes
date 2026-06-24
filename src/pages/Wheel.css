@@ -1,0 +1,82 @@
+.Wheel {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.wheel-hint {
+  margin: 0 0 1rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.decision-wheel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: min(90vw, 400px);
+}
+
+.wheel-pointer {
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 22px solid #333;
+  margin-bottom: -6px;
+  z-index: 2;
+}
+
+.wheel-container {
+  width: min(90vw, 400px);
+  height: min(90vw, 400px);
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.wheel-container.dragging {
+  cursor: grabbing;
+}
+
+.wheel-container.spinning {
+  cursor: default;
+}
+
+.wheel-spin-btn {
+  margin-top: 1.5rem;
+  padding: 0.6rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: 2px solid #333;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.wheel-spin-btn:hover:not(:disabled) {
+  background: #f0f0f0;
+}
+
+.wheel-spin-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wheel-result {
+  margin-top: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.wheel-result.visible {
+  opacity: 1;
+  transform: scale(1);
+}
