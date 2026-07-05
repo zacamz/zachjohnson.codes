@@ -3,7 +3,10 @@ import { activities } from "../data/activities";
 
 const FRICTION = 0.985;
 const STOP_THRESHOLD = 0.02;
-const COLORS = ["#e74c3c", "#3498db", "#2ecc71", "#f39c12", "#9b59b6", "#1abc9c"];
+const COLORS = [
+  "#e74c3c", "#3498db", "#2ecc71", "#f39c12", "#9b59b6", "#1abc9c",
+  "#e67e22", "#34495e", "#16a085", "#c0392b", "#8e44ad",
+];
 const SIZE = 400;
 const CX = SIZE / 2;
 const CY = SIZE / 2;
@@ -32,9 +35,10 @@ function getAngleFromCenter(clientX, clientY, rect) {
 function computeWinner(rotation) {
   const sliceAngle = 360 / activities.length;
   const normalized = ((rotation % 360) + 360) % 360;
-  const index = Math.floor(
-    (((360 - normalized + sliceAngle / 2) % 360) / sliceAngle) % activities.length
-  );
+  // Pointer is fixed at top; clockwise rotation moves wheel content clockwise,
+  // so the slice under the pointer is at wheel-local angle (360 - rotation).
+  const angleUnderPointer = (360 - normalized) % 360;
+  const index = Math.floor(angleUnderPointer / sliceAngle) % activities.length;
   return activities[index];
 }
 
@@ -205,7 +209,7 @@ function DecisionWheel() {
           x={labelX}
           y={labelY}
           fill="#fff"
-          fontSize={label.length > 10 ? 11 : 13}
+          fontSize={label.length > 12 ? 9 : label.length > 9 ? 10 : 12}
           fontWeight="bold"
           textAnchor="middle"
           dominantBaseline="middle"

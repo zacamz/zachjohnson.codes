@@ -5,4 +5,9 @@ export const activities = [
   "Game",
   "Go for a Walk",
   "Read",
+  "Hacky Sack",
+  "Bike Riding",
+  "Study",
+  "Music",
+  "Writing",
 ];
