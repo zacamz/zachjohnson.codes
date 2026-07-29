@@ -2,24 +2,33 @@
     margin-left: 1em;
 }
 
+/* Centered column for text-heavy pages (~65ch reading width) */
+.text-page {
+    max-width: 40rem;
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+    box-sizing: border-box;
+}
+
 .Now{
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+
 .About{
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 60vw
 }
 
 .Selfie{
-    width: 60vw;
+    width: 100%;
 }
 
 .bio{
-    width: 60vw
+    width: 100%;
 }
 
 .Resume{

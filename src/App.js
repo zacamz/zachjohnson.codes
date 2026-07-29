@@ -15,6 +15,7 @@ import LatinSquare from './pages/LatinSquare';
 import CodingTrain from './pages/CodingTrain';
 import Art from './pages/ArtQuestionMark'
 import Wheel from './pages/Wheel';
+import Tuner from './pages/Tuner';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path='Walker' element={<RandomWalk />}/>
         <Route path='CodingTrain' element={<CodingTrain />}/>
         <Route path='Wheel' element={<Wheel />}/>
+        <Route path='Tuner' element={<Tuner />}/>
       </Routes>
     </div>
   );

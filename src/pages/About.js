@@ -2,7 +2,7 @@ import selfie from '../images/BostonHarborSelfie.MP.jpg'
 
 function About() { 
     return(
-        <div className='About'>
+        <div className='About text-page'>
             <h2>
             Hello! My name is Zach Johnson and I code.
             </h2>
