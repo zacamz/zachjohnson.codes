@@ -18,6 +18,7 @@ const Header = () =>{
                 <Link to="/Decide"><Emoji symbol="🤔" label="deciding-face"/></Link>
                 <Link to="/Wheel"><Emoji symbol="🎡" label="ferris-wheel"/></Link>
                 <Link to="/Tuner"><Emoji symbol="🎸" label="guitar"/></Link>
+                <Link to="/BookReview"><Emoji symbol="📖" label="book"/></Link>
                 <Link to="/Rain"><Emoji symbol="☔" label="umbrella-rain"/></Link>
                 <Link to="/BdayCountDown"><Emoji symbol="🎂" label="birthday-cake"/></Link>
                 <Link to="/LatinSquare"><Emoji symbol="🟥" label="Square"/></Link>

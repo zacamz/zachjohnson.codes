@@ -1,0 +1,94 @@
+.BookReview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+}
+
+.BookReview-cover-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  max-width: 18rem;
+  width: 100%;
+}
+
+.BookReview-cover {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: 0 0.35rem 1.25rem rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.BookReview-cover-button:hover .BookReview-cover,
+.BookReview-cover-button:focus-visible .BookReview-cover {
+  transform: translateY(-0.2rem) scale(1.02);
+  box-shadow: 0 0.55rem 1.5rem rgba(0, 0, 0, 0.22);
+}
+
+.BookReview-review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.BookReview-back {
+  align-self: flex-start;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0.25rem 0;
+  opacity: 0.6;
+}
+
+.BookReview-back:hover,
+.BookReview-back:focus-visible {
+  opacity: 1;
+}
+
+.BookReview-page {
+  width: 100%;
+  max-width: 40rem;
+  height: auto;
+  display: block;
+  background: #f7f4ec;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.12);
+}
+
+.BookReview-card-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 100%;
+  max-width: 22rem;
+}
+
+.BookReview-card {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #fff;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.BookReview-card-button:hover .BookReview-card,
+.BookReview-card-button:focus-visible .BookReview-card {
+  transform: translateY(-0.15rem);
+  box-shadow: 0 0.45rem 1.25rem rgba(0, 0, 0, 0.16);
+}
