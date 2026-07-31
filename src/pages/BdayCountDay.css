@@ -19,6 +19,20 @@
   background-color: #ddd;
 }
 
+.week-square.birthday-cake {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  z-index: 1;
+}
+
+.week-square.birthday-cake span {
+  font-size: clamp(10px, 1.6vw, 16px);
+  line-height: 1;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .weeks-grid {

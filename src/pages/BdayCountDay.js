@@ -38,12 +38,20 @@ function BdayCountDown() {
         <p>Days till Zach is 90: {daysRemaining.toLocaleString()}</p>
         
         <div className="weeks-grid">
-          {weeksArray.map((isLived, index) => (
-            <div
-              key={index}
-              className={`week-square ${isLived ? 'lived' : 'remaining'}`}
-            />
-          ))}
+          {weeksArray.map((isLived, index) => {
+            const isNinetiethBirthday = index === totalWeeks - 1;
+            return (
+              <div
+                key={index}
+                className={`week-square ${isLived ? 'lived' : 'remaining'}${isNinetiethBirthday ? ' birthday-cake' : ''}`}
+                title={isNinetiethBirthday ? '90th birthday' : undefined}
+              >
+                {isNinetiethBirthday ? (
+                  <span role="img" aria-label="90th birthday cake">🎂</span>
+                ) : null}
+              </div>
+            );
+          })}
         </div>
       </div>
     );
