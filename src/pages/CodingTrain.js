@@ -1,13 +1,13 @@
 import React,{useState} from "react";
 import Intro from "../components/CodingTrain/Intro";
+import ExampleTitle from "../components/CodingTrain/HashtagHashtag";
 
 export default function CodingTrain() {
     let [currentExercise,setCurrentExercise] = useState(0)
 
     let exercises = [
         {title:"0.0 - Introduction", component: Intro},
-        {title:"0.1 - Introduction", component: Intro},
-        {title:"0.2 - Introduction", component: Intro},
+        {title:"#.# - Example Title", component: ExampleTitle},
     ]
 
 
