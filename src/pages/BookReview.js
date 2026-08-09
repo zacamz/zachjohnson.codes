@@ -64,6 +64,11 @@ function BookReview() {
               }
             />
           </button>
+          <img
+            className="BookReview-response"
+            src="/book-review/WendellBerryResponse.png"
+            alt="Handwritten reply from Wendell Berry"
+          />
         </div>
       )}
     </div>
