@@ -7,7 +7,12 @@ function Art (){
         <div>
             <div>
                 <h1>Art?</h1>
-                <Gallery folder="../art"></Gallery>
+                <Gallery
+                    folder="../art"
+                    links={{
+                        "08102026.png": { to: "/GoingPlaces", label: "Set this one adrift →" },
+                    }}
+                ></Gallery>
             </div>
 
         </div>

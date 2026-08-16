@@ -1,5 +1,8 @@
 .Header{
     margin-left: 1em;
+    /* Keeps the nav above full-bleed sketch canvases rather than behind them. */
+    position: relative;
+    z-index: 1;
 }
 
 /* Centered column for text-heavy pages (~65ch reading width) */

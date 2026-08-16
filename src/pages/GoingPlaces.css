@@ -1,0 +1,33 @@
+.GoingPlaces-back {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 0 1em;
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    /* This row spans the full width, so only the link itself should swallow clicks.
+       Everything either side of it belongs to the canvas underneath. */
+    pointer-events: none;
+}
+
+.GoingPlaces-back a {
+    pointer-events: auto;
+}
+
+/* Same idea for the nav, but only while this page is mounted. */
+.App:has(.GoingPlaces) .Header {
+    pointer-events: none;
+}
+
+.App:has(.GoingPlaces) .Header a {
+    pointer-events: auto;
+}
+
+/* Fixed to the viewport so the drifting field fills the window and runs underneath
+   the header instead of starting below it. */
+.SnailSpace canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    cursor: crosshair;
+}

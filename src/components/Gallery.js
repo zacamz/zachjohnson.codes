@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 
-function Gallery({ folder = "/gallery/myArt", maxImages = 50, ext = "jpg" }) {
+// `links` maps a filename to { to, label } so a single piece can point somewhere else.
+function Gallery({ folder = "/gallery/myArt", maxImages = 50, ext = "jpg", links = {} }) {
     const [images, setImages] = useState([]);
     const [index, setIndex] = useState(0);
     const navigate = useNavigate();
@@ -67,6 +68,9 @@ function Gallery({ folder = "/gallery/myArt", maxImages = 50, ext = "jpg" }) {
         return <div className="ProjectPreview">No images found in {folder}</div>;
     }
 
+    const currentFile = images[index]?.split("/").pop() || "";
+    const currentLink = links[currentFile];
+
     return (
         <div className="Gallery">
             <div>
@@ -74,6 +78,11 @@ function Gallery({ folder = "/gallery/myArt", maxImages = 50, ext = "jpg" }) {
                 <button onClick={() => setIndex((index + 1) % images.length)}>Next</button>
             </div>
             <img src={images[index]} alt={`Gallery ${index + 1}`} style={{ maxWidth: "50%" }} />
+            {currentLink && (
+                <div className="GalleryLink">
+                    <Link to={currentLink.to}>{currentLink.label}</Link>
+                </div>
+            )}
         </div>
     );
 }

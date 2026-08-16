@@ -17,6 +17,7 @@ import Art from './pages/ArtQuestionMark'
 import Wheel from './pages/Wheel';
 import Tuner from './pages/Tuner';
 import BookReview from './pages/BookReview';
+import GoingPlaces from './pages/GoingPlaces';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path='Wheel' element={<Wheel />}/>
         <Route path='Tuner' element={<Tuner />}/>
         <Route path='BookReview' element={<BookReview />}/>
+        <Route path='GoingPlaces' element={<GoingPlaces />}/>
       </Routes>
     </div>
   );
