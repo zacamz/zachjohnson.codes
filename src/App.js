@@ -18,6 +18,7 @@ import Wheel from './pages/Wheel';
 import Tuner from './pages/Tuner';
 import BookReview from './pages/BookReview';
 import GoingPlaces from './pages/GoingPlaces';
+import Blog from './pages/Blog';
 
 function App() {
   return (
@@ -40,6 +41,8 @@ function App() {
         <Route path='Tuner' element={<Tuner />}/>
         <Route path='BookReview' element={<BookReview />}/>
         <Route path='GoingPlaces' element={<GoingPlaces />}/>
+        <Route path='Blog' element={<Blog />}/>
+        <Route path='Blog/:slug' element={<Blog />}/>
       </Routes>
     </div>
   );

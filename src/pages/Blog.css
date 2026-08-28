@@ -1,0 +1,76 @@
+.Blog {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+  font-family: "Courier New", Courier, monospace;
+  color: #1a1a1a;
+  background: #f7f4ec;
+  min-height: calc(100vh - 4rem);
+  box-sizing: border-box;
+}
+
+.Blog-nav {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.Blog-nav button {
+  font: inherit;
+  font-size: 0.95rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  color: inherit;
+  opacity: 0.55;
+  text-transform: lowercase;
+}
+
+.Blog-nav button:hover:not(:disabled),
+.Blog-nav button:focus-visible:not(:disabled) {
+  opacity: 1;
+}
+
+.Blog-nav button:disabled {
+  cursor: default;
+  opacity: 0.2;
+}
+
+.Blog-header {
+  margin-bottom: 2.5rem;
+}
+
+.Blog-title {
+  font: inherit;
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin: 0 0 0.35rem;
+}
+
+.Blog-date {
+  font: inherit;
+  font-size: 0.85rem;
+  opacity: 0.5;
+}
+
+.Blog-content {
+  line-height: 1.65;
+}
+
+.Blog-content p {
+  margin: 0 0 1rem;
+}
+
+.Blog-content p:last-child {
+  margin-bottom: 0;
+}
+
+.Blog-content a {
+  color: inherit;
+}
+
+.Blog-missing {
+  opacity: 0.6;
+}
