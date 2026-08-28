@@ -4,9 +4,6 @@
   padding-top: 1rem;
   padding-bottom: 4rem;
   font-family: "Courier New", Courier, monospace;
-  color: #1a1a1a;
-  background: #f7f4ec;
-  min-height: calc(100vh - 4rem);
   box-sizing: border-box;
 }
 
@@ -69,6 +66,13 @@
 
 .Blog-content a {
   color: inherit;
+}
+
+.Blog-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
 }
 
 .Blog-missing {

@@ -1,25 +1,12 @@
-import Hello from "./hello";
-import FarmMorning from "./farm-morning";
-import BlankSlate from "./blank-slate";
+
+import CleaningMethod from "./Cleaning Method";
 
 const posts = [
-  {
-    slug: "hello",
-    title: "Hello",
-    date: "2026-08-01",
-    component: Hello,
-  },
-  {
-    slug: "farm-morning",
-    title: "Farm Morning",
-    date: "2026-08-15",
-    component: FarmMorning,
-  },
-  {
-    slug: "blank-slate",
-    title: "Blank Slate",
+    {
+    slug: "Cleaning-Method",
+    title: "Cleaning Method",
     date: "2026-08-27",
-    component: BlankSlate,
+    component: CleaningMethod,
   },
 ];
 

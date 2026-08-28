@@ -1,0 +1,81 @@
+.Projects {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+  box-sizing: border-box;
+}
+
+.Projects-intro {
+  margin: 0 0 2.5rem;
+  line-height: 1.65;
+  opacity: 0.85;
+}
+
+.Projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.ProjectPreview {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 1.25rem 1.35rem;
+  transition: border-color 0.15s ease;
+}
+
+.ProjectPreview:hover {
+  border-color: rgba(0, 0, 0, 0.28);
+}
+
+.ProjectPreview-title {
+  margin: 0 0 0.35rem;
+  font: inherit;
+  font-size: 1.1rem;
+  font-weight: normal;
+}
+
+.ProjectPreview-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ProjectPreview-title a:hover,
+.ProjectPreview-title a:focus-visible {
+  text-decoration: underline;
+}
+
+.ProjectPreview-url {
+  display: block;
+  margin-bottom: 0.85rem;
+  font-size: 0.8rem;
+  opacity: 0.45;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ProjectPreview-url:hover,
+.ProjectPreview-url:focus-visible {
+  opacity: 0.75;
+}
+
+.ProjectPreview-description {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.ProjectPreview-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+  padding: 0;
+  list-style: none;
+}
+
+.ProjectPreview-tags li {
+  font-size: 0.75rem;
+  opacity: 0.55;
+  text-transform: lowercase;
+}

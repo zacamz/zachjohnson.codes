@@ -43,6 +43,7 @@ function App() {
         <Route path='GoingPlaces' element={<GoingPlaces />}/>
         <Route path='Blog' element={<Blog />}/>
         <Route path='Blog/:slug' element={<Blog />}/>
+        <Route path='Projects' element={<Projects />}/>
       </Routes>
     </div>
   );
