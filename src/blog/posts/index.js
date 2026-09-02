@@ -1,5 +1,6 @@
 
 import CleaningMethod from "./Cleaning Method";
+import Experimart from "./Experimart";
 
 const posts = [
     {
@@ -7,6 +8,12 @@ const posts = [
     title: "Cleaning Method",
     date: "2026-08-27",
     component: CleaningMethod,
+  },
+    {
+    slug: "Experimart",
+    title: "Experimart",
+    date: "2026-08-28",
+    component: Experimart,
   },
 ];
 

@@ -5,6 +5,7 @@ import posts, {
   getPostIndex,
   getRandomSlug,
 } from "../blog/posts";
+import BlogLikeButton from "../components/BlogLikeButton";
 import "./Blog.css";
 
 function formatDate(dateString) {
@@ -77,6 +78,8 @@ function Blog() {
       <div className="Blog-content">
         <PostContent />
       </div>
+
+      <BlogLikeButton slug={post.slug} />
     </div>
   );
 }
