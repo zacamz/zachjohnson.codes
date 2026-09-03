@@ -79,7 +79,15 @@ function Blog() {
         <PostContent />
       </div>
 
-      <BlogLikeButton slug={post.slug} />
+      <footer className="Blog-footer">
+        <BlogLikeButton slug={post.slug} />
+        <a
+          className="Blog-email"
+          href={`mailto:zach@zachjohnson.codes?subject=${encodeURIComponent(post.title)}`}
+        >
+          email me
+        </a>
+      </footer>
     </div>
   );
 }
