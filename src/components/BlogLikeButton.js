@@ -8,12 +8,14 @@ function storageKey(slug) {
 
 export default function BlogLikeButton({ slug }) {
   const [count, setCount] = useState(null);
-  const [liked, setLiked] = useState(
-    () => localStorage.getItem(storageKey(slug)) === "1"
-  );
+  const [liked, setLiked] = useState(false);
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
+    setLiked(localStorage.getItem(storageKey(slug)) === "1");
+    setBusy(false);
+    setCount(null);
+
     if (!API) return;
 
     fetch(`${API}/likes/${encodeURIComponent(slug)}`)
@@ -33,10 +35,8 @@ export default function BlogLikeButton({ slug }) {
       );
       const data = await res.json();
       setCount(data.count);
-      if (!data.alreadyLiked) {
-        setLiked(true);
-        localStorage.setItem(storageKey(slug), "1");
-      }
+      setLiked(true);
+      localStorage.setItem(storageKey(slug), "1");
     } finally {
       setBusy(false);
     }
