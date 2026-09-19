@@ -20,6 +20,12 @@
     flex-direction: column;
 }
 
+.CoolSites{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .About{
     display: flex;
     align-items: center;

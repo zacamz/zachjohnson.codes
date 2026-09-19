@@ -19,6 +19,7 @@ import Tuner from './pages/Tuner';
 import BookReview from './pages/BookReview';
 import GoingPlaces from './pages/GoingPlaces';
 import Blog from './pages/Blog';
+import CoolSites from './pages/CoolSites';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path='Blog' element={<Blog />}/>
         <Route path='Blog/:slug' element={<Blog />}/>
         <Route path='Projects' element={<Projects />}/>
+        <Route path='CoolSites' element={<CoolSites />}/>
       </Routes>
     </div>
   );
