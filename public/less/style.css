@@ -15,7 +15,8 @@
     box-sizing: border-box;
 }
 
-body {
+body,
+#less-app {
     margin: 0;
     min-height: 100vh;
     color: var(--hud-text);
@@ -27,28 +28,32 @@ body {
     transition: background-color 0.45s ease, background-image 0.45s ease;
 }
 
-body.turn-red {
+body.turn-red,
+#less-app.turn-red {
     background-color: var(--bg-red);
     background-image:
         radial-gradient(ellipse 80% 60% at 50% -10%, var(--bg-red-glow), transparent 55%),
         linear-gradient(160deg, var(--bg-red-glow), var(--bg-red) 45%, #1a080c);
 }
 
-body.turn-blue {
+body.turn-blue,
+#less-app.turn-blue {
     background-color: var(--bg-blue);
     background-image:
         radial-gradient(ellipse 80% 60% at 50% -10%, var(--bg-blue-glow), transparent 55%),
         linear-gradient(160deg, var(--bg-blue-glow), var(--bg-blue) 45%, #061018);
 }
 
-body.game-over-blue {
+body.game-over-blue,
+#less-app.game-over-blue {
     background-color: #062848;
     background-image:
         radial-gradient(ellipse 70% 50% at 50% 20%, rgba(110, 193, 255, 0.45), transparent 60%),
         linear-gradient(160deg, #1a4a72, #062848 50%, #031018);
 }
 
-body.game-over-red {
+body.game-over-red,
+#less-app.game-over-red {
     background-color: #4a1018;
     background-image:
         radial-gradient(ellipse 70% 50% at 50% 20%, rgba(255, 107, 129, 0.4), transparent 60%),

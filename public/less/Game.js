@@ -28,7 +28,7 @@ function renderPiece(colorOfPiece, coasterX, coasterY) {
 
     let piece = document.createElement("div")
     piece.classList.add("piece-token")
-    piece.style.backgroundImage = `url(${pieceImg})`
+    piece.style.backgroundImage = `url(/less/${pieceImg})`
 
     let spot = document.querySelector(
         `[data-spot-board-x='${coasterX}'][data-spot-board-y='${coasterY}']`
@@ -63,18 +63,24 @@ function newGame() {
     updateUI()
 }
 
+function themeRoot() {
+    return document.getElementById("less-app") || document.body
+}
+
 function updateUI() {
     const turnStatus = document.getElementById("turn-status")
     const scoreStatus = document.getElementById("score-status")
     const winnerStatus = document.getElementById("winner-status")
     const endTurnBtn = document.getElementById("end-turn")
+    if (!turnStatus || !scoreStatus || !winnerStatus || !endTurnBtn) return
 
     const label = game.currentPlayer === "blue" ? "Blue" : "Red"
     const moveWord = game.movesLeft === 1 ? "move" : "moves"
     turnStatus.textContent = `${label}'s turn — ${game.movesLeft} ${moveWord} left`
     scoreStatus.textContent = `Moves used — Blue: ${game.scores.blue} · Red: ${game.scores.red}`
 
-    document.body.classList.remove(
+    const root = themeRoot()
+    root.classList.remove(
         "turn-blue",
         "turn-red",
         "game-over-blue",
@@ -86,13 +92,13 @@ function updateUI() {
         winnerStatus.classList.add("is-visible")
         winnerStatus.textContent = `${winnerLabel} wins!`
         turnStatus.textContent = "Game over"
-        document.body.classList.add(
+        root.classList.add(
             game.winner === "blue" ? "game-over-blue" : "game-over-red"
         )
     } else {
         winnerStatus.classList.remove("is-visible")
         winnerStatus.textContent = ""
-        document.body.classList.add(
+        root.classList.add(
             game.currentPlayer === "blue" ? "turn-blue" : "turn-red"
         )
     }
@@ -288,7 +294,7 @@ function checkWinner() {
     }
 }
 
-document.getElementById("board-root").addEventListener("click", function (event) {
+function onBoardClick(event) {
     if (game.winner) return
     const spot = event.target.closest(".spot")
     if (!spot) return
@@ -318,15 +324,32 @@ document.getElementById("board-root").addEventListener("click", function (event)
     } else {
         clearSelection()
     }
-})
+}
 
-document.getElementById("end-turn").addEventListener("click", function () {
-    if (game.winner) return
-    endTurn()
-})
+function bindLessUI() {
+    const boardRoot = document.getElementById("board-root")
+    const endTurnBtn = document.getElementById("end-turn")
+    const newGameBtn = document.getElementById("new-game")
+    if (!boardRoot || !endTurnBtn || !newGameBtn) return
 
-document.getElementById("new-game").addEventListener("click", function () {
+    boardRoot.onclick = onBoardClick
+    endTurnBtn.onclick = function () {
+        if (game.winner) return
+        endTurn()
+    }
+    newGameBtn.onclick = function () {
+        newGame()
+    }
+}
+
+function startLessGame() {
+    bindLessUI()
     newGame()
-})
+}
 
-newGame()
+window.startLessGame = startLessGame
+
+// Standalone /less/index.html boot. The React page calls startLessGame itself.
+if (document.getElementById("board-root") && !document.getElementById("less-app")) {
+    startLessGame()
+}
