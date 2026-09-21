@@ -1,0 +1,283 @@
+:root {
+    --hud-text: #f2f2f2;
+    --hud-muted: #d0d0d0;
+    --accent: #f2f2f2;
+    --blue: #6ec1ff;
+    --red: #ff6b81;
+    --win: #fff8e7;
+    --bg-blue: #0a2740;
+    --bg-red: #3a1018;
+    --bg-blue-glow: #123a5c;
+    --bg-red-glow: #5a1a28;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--hud-text);
+    font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+    background-color: var(--bg-blue);
+    background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, var(--bg-blue-glow), transparent 55%),
+        linear-gradient(160deg, var(--bg-blue-glow), var(--bg-blue) 45%, #061018);
+    transition: background-color 0.45s ease, background-image 0.45s ease;
+}
+
+body.turn-red {
+    background-color: var(--bg-red);
+    background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, var(--bg-red-glow), transparent 55%),
+        linear-gradient(160deg, var(--bg-red-glow), var(--bg-red) 45%, #1a080c);
+}
+
+body.turn-blue {
+    background-color: var(--bg-blue);
+    background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, var(--bg-blue-glow), transparent 55%),
+        linear-gradient(160deg, var(--bg-blue-glow), var(--bg-blue) 45%, #061018);
+}
+
+body.game-over-blue {
+    background-color: #062848;
+    background-image:
+        radial-gradient(ellipse 70% 50% at 50% 20%, rgba(110, 193, 255, 0.45), transparent 60%),
+        linear-gradient(160deg, #1a4a72, #062848 50%, #031018);
+}
+
+body.game-over-red {
+    background-color: #4a1018;
+    background-image:
+        radial-gradient(ellipse 70% 50% at 50% 20%, rgba(255, 107, 129, 0.4), transparent 60%),
+        linear-gradient(160deg, #7a2030, #4a1018 50%, #1a080c);
+}
+
+.game-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    /* Clear the site header when embedded full-bleed under the nav */
+    padding: 3.5rem 1rem 2rem;
+}
+
+.game-hud {
+    width: min(100%, 36rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.game-brand h1 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+}
+
+.tagline {
+    margin: 0;
+    color: var(--hud-muted);
+    font-size: 0.95rem;
+}
+
+.turn-status,
+.score-status,
+.winner-status {
+    margin: 0;
+}
+
+.turn-status {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.score-status {
+    color: var(--hud-muted);
+    font-size: 0.95rem;
+}
+
+.winner-status {
+    display: none;
+    margin: 0.75rem 0 0.25rem;
+    padding: 0.85rem 1.1rem;
+    color: var(--win);
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-align: center;
+    text-transform: uppercase;
+    border: 3px solid var(--win);
+    background: rgba(0, 0, 0, 0.35);
+    animation: winner-pop 0.55s ease-out;
+}
+
+.winner-status.is-visible {
+    display: block;
+}
+
+@keyframes winner-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    70% {
+        transform: scale(1.04);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+}
+
+.actions button {
+    color: var(--accent);
+    background: transparent;
+    border: 2px solid var(--accent);
+    padding: 0.45rem 0.9rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.actions button:hover:not(:disabled) {
+    background: var(--accent);
+    color: #0c0c0c;
+}
+
+.actions button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+#board-root {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+}
+
+.even {
+    flex: 1 0 0;
+}
+
+.odd {
+    flex: 10 0 0;
+}
+
+.coaster,
+.row {
+    display: flex;
+}
+
+.coaster {
+    flex-direction: column;
+    height: min(28vw, 11rem);
+    width: min(28vw, 11rem);
+    border: solid white 2px;
+}
+
+.space {
+    background-color: rgb(239, 235, 235);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.piece-token {
+    width: 72%;
+    height: 72%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+}
+
+.highlight1,
+.highlight2,
+.highlight3 {
+    outline: none;
+}
+
+.highlight1::after,
+.highlight2::after,
+.highlight3::after {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 58%;
+    height: 58%;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: clamp(0.85rem, 2.2vw, 1.35rem);
+    line-height: 1;
+    pointer-events: none;
+    z-index: 3;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.highlight1::after {
+    content: "1";
+    color: #0d3d12;
+    background: #8dff8a;
+}
+
+.highlight2::after {
+    content: "2";
+    color: #4a3b00;
+    background: #ffe566;
+}
+
+.highlight3::after {
+    content: "3";
+    color: #4a2800;
+    background: #ffb347;
+}
+
+.notWall {
+    background-color: rgb(203, 200, 200);
+}
+
+.wall {
+    background-color: #d4a017;
+    box-shadow: inset 0 0 0 2px #5c4300;
+}
+
+.dummy {
+    visibility: hidden;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+}
+
+.boardRow {
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 600px) {
+    .coaster {
+        height: min(30vw, 9.5rem);
+        width: min(30vw, 9.5rem);
+    }
+
+    .game-brand h1 {
+        font-size: 1.6rem;
+    }
+}

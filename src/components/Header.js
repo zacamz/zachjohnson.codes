@@ -25,6 +25,7 @@ const Header = () =>{
                 <Link to="/Walker"><Emoji symbol="🚶‍♀️" label="walker"/></Link>
                 <Link to="/CodingTrain"><Emoji symbol="🚂" label="train"/></Link>
                 <Link to="/CoolSites"><Emoji symbol="🕸️" label="web"/></Link>
+                <Link to="/Less"> > </Link>
                 
             </h1>
         </div>

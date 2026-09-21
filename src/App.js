@@ -20,6 +20,7 @@ import BookReview from './pages/BookReview';
 import GoingPlaces from './pages/GoingPlaces';
 import Blog from './pages/Blog';
 import CoolSites from './pages/CoolSites';
+import Less from './pages/Less';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path='Blog/:slug' element={<Blog />}/>
         <Route path='Projects' element={<Projects />}/>
         <Route path='CoolSites' element={<CoolSites />}/>
+        <Route path='Less' element={<Less />}/>
       </Routes>
     </div>
   );

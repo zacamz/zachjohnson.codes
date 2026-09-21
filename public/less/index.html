@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Less — Fan Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="game-app">
+        <header class="game-hud">
+            <div class="game-brand">
+                <h1>Less</h1>
+                <p class="tagline">Fan edition</p>
+            </div>
+            <p id="turn-status" class="turn-status"></p>
+            <p id="score-status" class="score-status"></p>
+            <p id="winner-status" class="winner-status" aria-live="polite"></p>
+            <div class="actions">
+                <button type="button" id="end-turn">End turn</button>
+                <button type="button" id="new-game">New game</button>
+            </div>
+        </header>
+        <div id="board-root"></div>
+    </main>
+    <script src="./Board.js"></script>
+    <script src="./Game.js"></script>
+</body>
+</html>
