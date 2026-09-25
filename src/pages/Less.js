@@ -35,7 +35,7 @@ function Less() {
 
   useEffect(() => {
     let cancelled = false;
-    loadStylesheet("/less/style.css");
+    const stylesheet = loadStylesheet("/less/style.css");
 
     (async () => {
       try {
@@ -53,6 +53,14 @@ function Less() {
 
     return () => {
       cancelled = true;
+      // The game stylesheet styles `body`, so it must not outlive this page.
+      stylesheet.remove();
+      document.body.classList.remove(
+        "turn-blue",
+        "turn-red",
+        "game-over-blue",
+        "game-over-red"
+      );
     };
   }, []);
 
